@@ -1,5 +1,5 @@
 import { JoinRoomView } from '@/components/JoinRoomView/JoinRoomView';
-export default function HomePage() {
+export function HomePage() {
   return (
     <>
         <JoinRoomView></JoinRoomView>
