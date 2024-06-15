@@ -1,2 +1,5 @@
-# ReactPointPoker
-A React project showing a point poker system for scrum/agile.
+# React Point Poker
+
+A simple React project using Mantine components for helping with Scrum/Agile Point Poker.
+
+This was created as a hobby project, so fixes for bugs and other such support may be limited at best. Thank you!
