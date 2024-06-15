@@ -23,12 +23,14 @@ export function JoinRoomView() {
     useEffect(() => {
         if (inputRoom === undefined) {
             if (window.location.hash && window.location.hash !== "#") {
+                {/* @ts-ignore */}
                 setInputRoom(window.location.hash.split("#")[1]);
             }
         }
 
         if (inputName === undefined) {
             if (localStorage.getItem("PointPokerName") != null) {
+                {/* @ts-ignore */}
                 setInputName(localStorage.getItem("PointPokerName"));
             }
         }
@@ -219,7 +221,7 @@ export function JoinRoomView() {
                 alert("Error - please input a name to join!");
                 return;
             }
-            localStorage.setItem("PointPokerName", inputName);
+            localStorage.setItem("PointPokerName", inputName || "");
 
             currentPeerId.current = "ReactPeerPokerClient_" + randomGeneratedId.current;
             isRoomHost.current = false;
@@ -263,11 +265,13 @@ export function JoinRoomView() {
                 alert("Error - please input a name to host!");
                 return;
             }
-            localStorage.setItem("PointPokerName", inputName);
+            localStorage.setItem("PointPokerName", inputName || "");
 
             window.location.hash = "#" + randomGeneratedId.current;
 
+            {/* @ts-ignore */}
             setInputRoom(randomGeneratedId.current);
+
             isRoomHost.current = true;
             currentPeerId.current = "ReactPeerPokerRoom_" + randomGeneratedId.current;
 
@@ -284,26 +288,30 @@ export function JoinRoomView() {
 
         function ResetMemoryClick() {
             localStorage.clear();
+            {/* @ts-ignore */}
             setInputName("");
+            {/* @ts-ignore */}
             setInputRoom("");
             setColorScheme("auto");
         }
 
         function getJoinButton() {
             if (inputRoom && inputName) {
+                {/* @ts-ignore */}
                 if (inputRoom.trim() !== "" && inputName.trim() !== "") {
                     return (<Button variant="filled" color="grape" onClick={JoinRoomClick}>Join Room</Button>);
                 }
             }
-            return (<Button variant="filled" color="grape" onClick={JoinRoomClick} disabled='true'>Join Room</Button>)
+            return (<Button variant="filled" color="grape" onClick={JoinRoomClick} disabled={true}>Join Room</Button>)
         }
         function getCreateButton() {
             if (inputName) {
+                {/* @ts-ignore */}
                 if (inputName.trim() !== "") {
                     return (<Button variant="filled" color="grape" onClick={CreateRoomClick}>Create New Room</Button>);
                 }
             }
-            return (<Button variant="filled" color="grape" disabled='true' onClick={CreateRoomClick}>Create New Room</Button>)
+            return (<Button variant="filled" color="grape" disabled={true} onClick={CreateRoomClick}>Create New Room</Button>)
         }
 
         return (
@@ -313,7 +321,9 @@ export function JoinRoomView() {
                 </Title>
     
                 <SimpleGrid cols={2}>
+                    {/* @ts-ignore */}
                     <TextInput label="Name" description="Please enter your name" placeholder='John Doe' value={inputName} onChange={e => setInputName(e.target.value)}></TextInput>
+                    {/* @ts-ignore */}
                     <TextInput label="Room ID" description="Please enter the ID of the room you wish to join" placeholder={randomGeneratedId.current} value={inputRoom} onChange={e => setInputRoom(e.target.value)}></TextInput>
                     {getCreateButton()}
                     {getJoinButton()}
@@ -489,7 +499,7 @@ export function JoinRoomView() {
             let voteDataKeyValuePairs = Object.entries(globalPeerJSRefData.current.voteData);
             for (let i = 0; i < voteDataKeyValuePairs.length; i++) {
                 let item = voteDataKeyValuePairs[i];
-                let voteData = item[1];
+                let voteData : any = item[1];
                 returnData.push(
                 <Card>
                     <Group justify='center'>
