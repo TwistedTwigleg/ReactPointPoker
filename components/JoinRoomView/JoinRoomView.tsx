@@ -328,7 +328,7 @@ export function JoinRoomView() {
 
                 <Space h='xl'></Space>
                 <Divider my="md" />
-                <Text ta='center' size='8'>Created by <a href="https://twistedtwigleg.itch.io">TwistedTwigleg</a> - <a href="https://github.com">Source</a></Text>
+                <Text ta='center' size='8'>Created by <a href="https://twistedtwigleg.itch.io">TwistedTwigleg</a> - <a href="https://github.com/TwistedTwigleg/ReactPointPoker">Source</a></Text>
 
             </Container>
         ); 
